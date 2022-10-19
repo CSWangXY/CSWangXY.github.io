@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -26,22 +26,19 @@
 <meta property="og:url" content="http://example.com/2022/10/17/cp1-lab/index.html">
 <meta property="og:site_name" content="Blog of Xingyu Wang">
 <meta property="og:description" content="cp1-Labs2022-10-13 Lab 1-1 将Lab01-01.exe和Lab01-01.dll上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-1.JPG">
 <meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-2.JPG">
-<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/img/1-6.JPG">
-<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/img/1-3.JPG">
-<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/.%5Cimg%5C1-4.JPG">
-<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/.%5Cimg%5C1-5.JPG">
-<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/.%5Cimg%5C1-7.JPG">
+<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-6.JPG">
+<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-3.JPG">
+<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-4.JPG">
+<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-5.JPG">
+<meta property="og:image" content="http://example.com/2022/10/17/cp1-lab/1-7.JPG">
 <meta property="article:published_time" content="2022-10-17T14:35:52.673Z">
-<meta property="article:modified_time" content="2022-10-18T05:37:09.996Z">
+<meta property="article:modified_time" content="2022-10-19T08:35:38.284Z">
 <meta property="article:author" content="Xingyu-Wang">
 <meta property="article:tag" content="逆向">
 <meta property="article:tag" content="软件安全">
-<meta property="article:tag" content="123">
-<meta property="article:tag" content="456">
-<meta property="article:tag" content="789">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/10/17/cp1-lab/1-1.JPG">
 
@@ -54,7 +51,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 
@@ -98,7 +95,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Toggle navigation bar">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -127,42 +124,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
-
-  </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
@@ -192,7 +174,7 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/17/cp1-lab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,17 +196,26 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Posted on</span>
 
-              <time title="创建时间：2022-10-17 22:35:52" itemprop="dateCreated datePublished" datetime="2022-10-17T22:35:52+08:00">2022-10-17</time>
+              <time title="Created: 2022-10-17 22:35:52" itemprop="dateCreated datePublished" datetime="2022-10-17T22:35:52+08:00">2022-10-17</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-18 13:37:09" itemprop="dateModified" datetime="2022-10-18T13:37:09+08:00">2022-10-18</time>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-19 16:35:38" itemprop="dateModified" datetime="2022-10-19T16:35:38+08:00">2022-10-19</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%8F%91%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">恶意软件发现与分析课程实验</span></a>
+                </span>
+            </span>
 
           
 
@@ -242,31 +233,27 @@
 <li>将Lab01-01.exe和Lab01-01.dll上传至<code>www.virustotal.com</code>分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。</li>
 </ol>
 <p><img src="/2022/10/17/cp1-lab/1-1.JPG" alt="01"></p>
-<p><img src="/2022/10/17/cp1-lab/1-2.JPG" alt="01"></p>
 <span id="more"></span>
 
-
-
+<p><img src="/2022/10/17/cp1-lab/1-2.JPG" alt="02"></p>
 <ol start="2">
 <li>根据viroustotal提供的信息，可得文件的编译时间</li>
 </ol>
-<img src="/2022/10/17/cp1-lab/img\1-6.JPG" alt="1-6" style="zoom:80%;">
-
-<img src="/2022/10/17/cp1-lab/img\1-3.JPG" alt="1-3" style="zoom:80%;">
-
+<p><img src="/2022/10/17/cp1-lab/1-6.JPG" alt="03"></p>
+<p><img src="/2022/10/17/cp1-lab/1-3.JPG" alt="04"></p>
 <ol start="3">
 <li>是否有迹象说明这两个文件被加壳或混淆？</li>
 </ol>
 <p>直接使用PEiD做检测，可得如下结果</p>
-<p><img src="/2022/10/17/cp1-lab/.%5Cimg%5C1-4.JPG" alt="1-4"></p>
-<p><img src="/2022/10/17/cp1-lab/.%5Cimg%5C1-5.JPG" alt="1-5"></p>
+<p><img src="/2022/10/17/cp1-lab/1-4.JPG" alt="05"></p>
+<p><img src="/2022/10/17/cp1-lab/1-5.JPG" alt="1-5"></p>
 <p>可知两样本都为被加壳</p>
 <ol start="4">
 <li><p>使用dependency Walker打开lab01-01.exe，查看导入表，发现其导入了msvcrt.dll、kernel32.dll。其中前者是每一个执行文件都会包含的，后者则包含了文件的搜索、处理、修改操作。</p>
 <p>使用string查看lab01-01.exe中包含的字符串，可发现其中存在用来混淆视听的kerne132.dll</p>
 </li>
 </ol>
-<p><img src="/2022/10/17/cp1-lab/.%5Cimg%5C1-7.JPG" alt="1-7"></p>
+<p><img src="/2022/10/17/cp1-lab/1-7.JPG" alt="1-7"></p>
 <p>​	查看lab01-01.dll的导入表，可看到起导入了WS2.dll，kernel32.dll导入了createprocess和sleep函数。其中create函数可能用于运行程序，sleep则用于进入休眠模式。lab01-01.dll文件的string中有IP地址，属于基于网络的迹象。</p>
 <p>lab01-01.dll是一个后门程序，lab01-01.exe是用于装载dll文件并运行的。</p>
 
@@ -280,9 +267,6 @@
           <div class="post-tags">
               <a href="/tags/%E9%80%86%E5%90%91/" rel="tag"># 逆向</a>
               <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/" rel="tag"># 软件安全</a>
-              <a href="/tags/123/" rel="tag"># 123</a>
-              <a href="/tags/456/" rel="tag"># 456</a>
-              <a href="/tags/789/" rel="tag"># 789</a>
           </div>
 
         
@@ -290,13 +274,10 @@
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/10/17/1/" rel="prev" title="Hello">
-      <i class="fa fa-chevron-left"></i> Hello
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/10/17/hello-world/" rel="next" title="Hello World">
-      Hello World <i class="fa fa-chevron-right"></i>
+    <a href="/2022/10/18/hello-world/" rel="next" title="Hexo 部署方法">
+      Hexo 部署方法 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -347,10 +328,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -371,20 +352,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -416,7 +397,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Xingyu-Wang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
         
