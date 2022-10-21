@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="2022.10.17-2022.10.23leetcode总结">
+  <meta name="description" content="前言：2022年3月初到2022年10月中旬，我照着github用户halfrost编写的LeetCode刷题书的知识点顺序，初学了LeetCode涉及的基础数据结构和算法。从本周开始，我将按照LeetCode网站上的tag，按照更为细化的知识点顺序，开始新一轮的刷题，预计每周不少于五道题，文章组织形式大多按照知识点进行小结。 本周总结1-分治法4 寻找两个正序数组中位数169 多数元素本周总结2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode周报">
+<meta property="og:title" content="LeetCode周报1:20221017-20221023">
 <meta property="og:url" content="http://example.com/2022/10/19/LeetCode%E5%91%A8%E6%8A%A5-1/index.html">
 <meta property="og:site_name" content="Blog of Xingyu Wang">
-<meta property="og:description" content="2022.10.17-2022.10.23leetcode总结">
+<meta property="og:description" content="前言：2022年3月初到2022年10月中旬，我照着github用户halfrost编写的LeetCode刷题书的知识点顺序，初学了LeetCode涉及的基础数据结构和算法。从本周开始，我将按照LeetCode网站上的tag，按照更为细化的知识点顺序，开始新一轮的刷题，预计每周不少于五道题，文章组织形式大多按照知识点进行小结。 本周总结1-分治法4 寻找两个正序数组中位数169 多数元素本周总结2">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-19T08:39:51.000Z">
-<meta property="article:modified_time" content="2022-10-19T08:42:57.320Z">
+<meta property="article:modified_time" content="2022-10-21T14:32:57.166Z">
 <meta property="article:author" content="Xingyu-Wang">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>LeetCode周报 | Blog of Xingyu Wang</title>
+  <title>LeetCode周报1:20221017-20221023 | Blog of Xingyu Wang</title>
   
 
 
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode周报
+          LeetCode周报1:20221017-20221023
         </h1>
 
         <div class="post-meta">
@@ -188,10 +188,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-10-19 16:39:51 / Modified: 16:42:57" itemprop="dateCreated datePublished" datetime="2022-10-19T16:39:51+08:00">2022-10-19</time>
+              <time title="Created: 2022-10-19 16:39:51" itemprop="dateCreated datePublished" datetime="2022-10-19T16:39:51+08:00">2022-10-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-10-21 22:32:57" itemprop="dateModified" datetime="2022-10-21T22:32:57+08:00">2022-10-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -213,8 +219,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>2022.10.17-2022.10.23leetcode总结</p>
-
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>2022年3月初到2022年10月中旬，我照着github用户<a target="_blank" rel="noopener" href="https://github.com/halfrost/LeetCode-Go">halfrost</a>编写的LeetCode刷题书的知识点顺序，初学了LeetCode涉及的基础数据结构和算法。从本周开始，我将按照LeetCode网站上的tag，按照更为细化的知识点顺序，开始新一轮的刷题，预计每周不少于五道题，文章组织形式大多按照知识点进行小结。</p>
+<h2 id="本周总结1-分治法"><a href="#本周总结1-分治法" class="headerlink" title="本周总结1-分治法"></a>本周总结1-分治法</h2><h3 id="4-寻找两个正序数组中位数"><a href="#4-寻找两个正序数组中位数" class="headerlink" title="4 寻找两个正序数组中位数"></a>4 寻找两个正序数组中位数</h3><h3 id="169-多数元素"><a href="#169-多数元素" class="headerlink" title="169 多数元素"></a>169 多数元素</h3><h2 id="本周总结2-二分查找"><a href="#本周总结2-二分查找" class="headerlink" title="本周总结2-二分查找"></a>本周总结2-二分查找</h2><h3 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33 搜索旋转排序数组"></a>33 搜索旋转排序数组</h3><h3 id="34-数组中搜索元素的第一和最后一个位置"><a href="#34-数组中搜索元素的第一和最后一个位置" class="headerlink" title="34 数组中搜索元素的第一和最后一个位置"></a>34 数组中搜索元素的第一和最后一个位置</h3><h3 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35 搜索插入位置"></a>35 搜索插入位置</h3><h3 id="240-搜索二位矩阵"><a href="#240-搜索二位矩阵" class="headerlink" title="240 搜索二位矩阵"></a>240 搜索二位矩阵</h3>
     </div>
 
     
@@ -294,6 +300,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E6%80%BB%E7%BB%931-%E5%88%86%E6%B2%BB%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">本周总结1-分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">4 寻找两个正序数组中位数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0"><span class="nav-number">2.2.</span> <span class="nav-text">169 多数元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%91%A8%E6%80%BB%E7%BB%932-%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="nav-number">3.</span> <span class="nav-text">本周总结2-二分查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">3.1.</span> <span class="nav-text">33 搜索旋转排序数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-%E6%95%B0%E7%BB%84%E4%B8%AD%E6%90%9C%E7%B4%A2%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">34 数组中搜索元素的第一和最后一个位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">35 搜索插入位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E4%BD%8D%E7%9F%A9%E9%98%B5"><span class="nav-number">3.4.</span> <span class="nav-text">240 搜索二位矩阵</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
