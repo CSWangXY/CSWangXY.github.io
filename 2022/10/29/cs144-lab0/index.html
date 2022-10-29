@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简介lab0主要有四项任务，分别是使用telnet获取网页内容，使用telnet发送电子邮件，编写一个webget程序获取网页内容，以及完成一个读取内存字节流的程序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs144-lab0">
+<meta property="og:url" content="http://example.com/2022/10/29/cs144-lab0/index.html">
+<meta property="og:site_name" content="Blog of Xingyu Wang">
+<meta property="og:description" content="简介lab0主要有四项任务，分别是使用telnet获取网页内容，使用telnet发送电子邮件，编写一个webget程序获取网页内容，以及完成一个读取内存字节流的程序。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/10/29/cs144-lab0/1-1.JPG">
+<meta property="og:image" content="http://example.com/2022/10/29/cs144-lab0/1-2.JPG">
+<meta property="og:image" content="http://example.com/2022/10/29/cs144-lab0/3.JPG">
+<meta property="og:image" content="http://example.com/2022/10/29/cs144-lab0/result.JPG">
+<meta property="article:published_time" content="2022-10-29T06:49:55.000Z">
+<meta property="article:modified_time" content="2022-10-29T07:19:29.962Z">
+<meta property="article:author" content="Xingyu-Wang">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="网络编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/10/29/cs144-lab0/1-1.JPG">
+
+<link rel="canonical" href="http://example.com/2022/10/29/cs144-lab0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>cs144-lab0 | Blog of Xingyu Wang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog of Xingyu Wang</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/29/cs144-lab0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xingyu-Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog of Xingyu Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          cs144-lab0
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-10-29 14:49:55 / Modified: 15:19:29" itemprop="dateCreated datePublished" datetime="2022-10-29T14:49:55+08:00">2022-10-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs144%E5%AE%9E%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">cs144实验</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>lab0主要有四项任务，分别是使用telnet获取网页内容，使用telnet发送电子邮件，编写一个webget程序获取网页内容，以及完成一个读取内存字节流的程序。</p>
+<span id="more"></span>
+
+<h2 id="1-2"><a href="#1-2" class="headerlink" title="1-2"></a>1-2</h2><p>按照实验手册的命令执行即可，命令之间的间隔时间不宜太长，否则服务器会报请求超时的错。</p>
+<p><img src="/2022/10/29/cs144-lab0/1-1.JPG" alt="02"></p>
+<p><img src="/2022/10/29/cs144-lab0/1-2.JPG" alt="01"></p>
+<p><img src="/2022/10/29/cs144-lab0/3.JPG" alt="01"></p>
+<h2 id="3-编写webget"><a href="#3-编写webget" class="headerlink" title="3 编写webget"></a>3 编写webget</h2><p>包括以下几步：新建socket；与服务器建立连接；发送请求；读响应。关键代码如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TCPSocket client_socket;</span><br><span class="line"><span class="comment">// 与服务器建立TCP连接</span></span><br><span class="line">client_socket.<span class="built_in">connect</span>(<span class="built_in">Address</span>(host, <span class="string">&quot;http&quot;</span>));</span><br><span class="line"><span class="comment">// 客户端发送请求request</span></span><br><span class="line">string reqMsg = <span class="string">&quot;GET &quot;</span> + path + <span class="string">&quot; HTTP/1.1\r\n&quot;</span> + <span class="string">&quot;Host: &quot;</span> + host + <span class="string">&quot;\r\n&quot;</span> + <span class="string">&quot;Connection: close\r\n\r\n&quot;</span>;</span><br><span class="line">client_socket.<span class="built_in">write</span>(reqMsg);</span><br><span class="line"><span class="comment">//  客户端接收服务端的响应response</span></span><br><span class="line"><span class="keyword">while</span> (!client_socket.<span class="built_in">eof</span>())</span><br><span class="line">&#123;</span><br><span class="line">    string recvMsg = client_socket.<span class="built_in">read</span>();</span><br><span class="line">    cout &lt;&lt; recvMsg;</span><br><span class="line">&#125;</span><br><span class="line">client_socket.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-完成一个读取内存字节流的程序"><a href="#4-完成一个读取内存字节流的程序" class="headerlink" title="4 完成一个读取内存字节流的程序"></a>4 完成一个读取内存字节流的程序</h2><p>实验要求是完成对一个内存缓冲区中字符串的读和写任务。设置私有变量<code>bytes</code>作为缓冲区，并使用如下变量记录缓冲区大小，已读已写字符的大小等。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string bytes = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="type">size_t</span> maxsize = <span class="number">0</span>;</span><br><span class="line"><span class="type">size_t</span> hasread = <span class="number">0</span>;</span><br><span class="line"><span class="type">size_t</span> haswritten = <span class="number">0</span>;</span><br><span class="line"><span class="type">bool</span> is_end = <span class="literal">false</span>;</span><br><span class="line"><span class="type">bool</span> _error&#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>各读写端口的实现均按照字符串处理方式实现即可。关键代码实现如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">ByteStream::<span class="built_in">ByteStream</span>(<span class="type">const</span> <span class="type">size_t</span> capacity)</span><br><span class="line">&#123;</span><br><span class="line">    maxsize = capacity;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">ByteStream::write</span><span class="params">(<span class="type">const</span> string &amp;data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> size;</span><br><span class="line">    <span class="keyword">if</span> (data.<span class="built_in">size</span>() &lt;= <span class="built_in">remaining_capacity</span>())</span><br><span class="line">        size = data.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = <span class="built_in">remaining_capacity</span>();</span><br><span class="line">    bytes += data.<span class="built_in">substr</span>(<span class="number">0</span>, size);</span><br><span class="line">    haswritten += size;</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//! \param[in] len bytes will be copied from the output side of the buffer</span></span><br><span class="line"><span class="function">string <span class="title">ByteStream::peek_output</span><span class="params">(<span class="type">const</span> <span class="type">size_t</span> len)</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> size;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="built_in">buffer_size</span>())</span><br><span class="line">        size = len;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = <span class="built_in">buffer_size</span>();</span><br><span class="line">    string str = bytes.<span class="built_in">substr</span>(<span class="number">0</span>, size);</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//! \param[in] len bytes will be removed from the output side of the buffer</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ByteStream::pop_output</span><span class="params">(<span class="type">const</span> <span class="type">size_t</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> size;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="built_in">buffer_size</span>())</span><br><span class="line">        size = len;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = <span class="built_in">buffer_size</span>();</span><br><span class="line">    bytes.<span class="built_in">erase</span>(<span class="number">0</span>, size);</span><br><span class="line">    hasread += size;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//! Read (i.e., copy and then pop) the next &quot;len&quot; bytes of the stream</span></span><br><span class="line"><span class="comment">//! \param[in] len bytes will be popped and returned</span></span><br><span class="line"><span class="comment">//! \returns a string</span></span><br><span class="line"><span class="function">std::string <span class="title">ByteStream::read</span><span class="params">(<span class="type">const</span> <span class="type">size_t</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">size_t</span> size;</span><br><span class="line">    <span class="keyword">if</span> (len &lt;= <span class="built_in">buffer_size</span>())</span><br><span class="line">        size = len;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        size = <span class="built_in">buffer_size</span>();</span><br><span class="line">    string ret = <span class="built_in">peek_output</span>(size);</span><br><span class="line">    <span class="built_in">pop_output</span>(size);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ByteStream::end_input</span><span class="params">()</span> </span>&#123; is_end = <span class="literal">true</span>; &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ByteStream::input_ended</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> is_end; &#125;</span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">ByteStream::buffer_size</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> bytes.<span class="built_in">size</span>(); &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ByteStream::buffer_empty</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> bytes.<span class="built_in">empty</span>(); &#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">ByteStream::eof</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">buffer_empty</span>() &amp;&amp; is_end; &#125;</span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">ByteStream::bytes_written</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> haswritten; &#125;</span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">ByteStream::bytes_read</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> hasread; &#125;</span><br><span class="line"><span class="function"><span class="type">size_t</span> <span class="title">ByteStream::remaining_capacity</span><span class="params">()</span> <span class="type">const</span> </span>&#123; <span class="keyword">return</span> maxsize - bytes.<span class="built_in">size</span>(); &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p>测试结果如下，可通过所有测试点。</p>
+<p><img src="/2022/10/29/cs144-lab0/result.JPG" alt="01"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="tag"># 网络编程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/28/LeetCode%E5%91%A8%E6%8A%A5-2/" rel="prev" title="LC周报-分治法、记忆化搜索(20221024-20221030)">
+      <i class="fa fa-chevron-left"></i> LC周报-分治法、记忆化搜索(20221024-20221030)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2"><span class="nav-number">2.</span> <span class="nav-text">1-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BC%96%E5%86%99webget"><span class="nav-number">3.</span> <span class="nav-text">3 编写webget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%AE%8C%E6%88%90%E4%B8%80%E4%B8%AA%E8%AF%BB%E5%8F%96%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-number">4.</span> <span class="nav-text">4 完成一个读取内存字节流的程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">5.</span> <span class="nav-text">测试结果</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xingyu-Wang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xingyu-Wang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
