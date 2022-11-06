@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"cswangxy.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="cp1-Labs 2022-10-13 Lab 1-1  将Lab01-01.exe和Lab01-01.dll上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。">
+  <meta name="description" content="cp1-Labs 2022-10-13 Lab 1-1  将 Lab01-01.exe 和 Lab01-01.dll 上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。   01">
 <meta property="og:type" content="article">
 <meta property="og:title" content="恶意软件发现与分析第一章实验">
 <meta property="og:url" content="https://cswangxy.github.io/2022/10/17/cp1-lab/index.html">
 <meta property="og:site_name" content="Blog of Xingyu Wang">
-<meta property="og:description" content="cp1-Labs 2022-10-13 Lab 1-1  将Lab01-01.exe和Lab01-01.dll上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。">
+<meta property="og:description" content="cp1-Labs 2022-10-13 Lab 1-1  将 Lab01-01.exe 和 Lab01-01.dll 上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。   01">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-1.JPG">
 <meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-2.JPG">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-5.JPG">
 <meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-7.JPG">
 <meta property="article:published_time" content="2022-10-17T14:35:52.673Z">
-<meta property="article:modified_time" content="2022-10-19T08:35:38.284Z">
+<meta property="article:modified_time" content="2022-11-06T03:39:18.736Z">
 <meta property="article:author" content="Xingyu-Wang">
 <meta property="article:tag" content="逆向">
 <meta property="article:tag" content="软件安全">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-10-19 16:35:38" itemprop="dateModified" datetime="2022-10-19T16:35:38+08:00">2022-10-19</time>
+                <time title="Modified: 2022-11-06 11:39:18" itemprop="dateModified" datetime="2022-11-06T11:39:18+08:00">2022-11-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,14 +232,17 @@
 <p>2022-10-13</p>
 <h2 id="lab-1-1">Lab 1-1</h2>
 <ol type="1">
-<li>将Lab01-01.exe和Lab01-01.dll上传至<code>www.virustotal.com</code>分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。</li>
+<li>将 Lab01-01.exe 和 Lab01-01.dll 上传至<code>www.virustotal.com</code>分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。</li>
 </ol>
-<p><img src="/2022/10/17/cp1-lab/1-1.JPG" alt="01"> <span id="more"></span></p>
+<figure>
+<img src="/2022/10/17/cp1-lab/1-1.JPG" alt="01"><figcaption aria-hidden="true">01</figcaption>
+</figure>
+<span id="more"></span>
 <figure>
 <img src="/2022/10/17/cp1-lab/1-2.JPG" alt="02"><figcaption aria-hidden="true">02</figcaption>
 </figure>
 <ol start="2" type="1">
-<li>根据viroustotal提供的信息，可得文件的编译时间</li>
+<li>根据 viroustotal 提供的信息，可得文件的编译时间</li>
 </ol>
 <figure>
 <img src="/2022/10/17/cp1-lab/1-6.JPG" alt="03"><figcaption aria-hidden="true">03</figcaption>
@@ -250,7 +253,7 @@
 <ol start="3" type="1">
 <li>是否有迹象说明这两个文件被加壳或混淆？</li>
 </ol>
-<p>直接使用PEiD做检测，可得如下结果</p>
+<p>直接使用 PEiD 做检测，可得如下结果</p>
 <figure>
 <img src="/2022/10/17/cp1-lab/1-4.JPG" alt="05"><figcaption aria-hidden="true">05</figcaption>
 </figure>
@@ -259,14 +262,14 @@
 </figure>
 <p>可知两样本都为被加壳</p>
 <ol start="4" type="1">
-<li><p>使用dependency Walker打开lab01-01.exe，查看导入表，发现其导入了msvcrt.dll、kernel32.dll。其中前者是每一个执行文件都会包含的，后者则包含了文件的搜索、处理、修改操作。</p>
-<p>使用string查看lab01-01.exe中包含的字符串，可发现其中存在用来混淆视听的kerne132.dll</p></li>
+<li><p>使用 dependency Walker 打开 lab01-01.exe，查看导入表，发现其导入了 msvcrt.dll、kernel32.dll。其中前者是每一个执行文件都会包含的，后者则包含了文件的搜索、处理、修改操作。</p>
+<p>使用 string 查看 lab01-01.exe 中包含的字符串，可发现其中存在用来混淆视听的 kerne132.dll</p></li>
 </ol>
 <figure>
 <img src="/2022/10/17/cp1-lab/1-7.JPG" alt="1-7"><figcaption aria-hidden="true">1-7</figcaption>
 </figure>
-<p>​ 查看lab01-01.dll的导入表，可看到起导入了WS2.dll，kernel32.dll导入了createprocess和sleep函数。其中create函数可能用于运行程序，sleep则用于进入休眠模式。lab01-01.dll文件的string中有IP地址，属于基于网络的迹象。</p>
-<p>lab01-01.dll是一个后门程序，lab01-01.exe是用于装载dll文件并运行的。</p>
+<p>​ 查看 lab01-01.dll 的导入表，可看到起导入了 WS2.dll，kernel32.dll 导入了 createprocess 和 sleep 函数。其中 create 函数可能用于运行程序，sleep 则用于进入休眠模式。lab01-01.dll 文件的 string 中有 IP 地址，属于基于网络的迹象。</p>
+<p>lab01-01.dll 是一个后门程序，lab01-01.exe 是用于装载 dll 文件并运行的。</p>
 
     </div>
 
