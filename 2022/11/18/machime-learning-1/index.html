@@ -20,29 +20,20 @@
     var CONFIG = {"hostname":"cswangxy.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="cp1-Labs 2022-10-13 Lab 1-1  将 Lab01-01.exe 和 Lab01-01.dll 上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。   01">
+  <meta name="description" content="一、贝叶斯学习 1.1 概述 \[ P(A|B)&#x3D;\frac{P(B|A)P(A)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|\sim A)P(\sim A)} \]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="恶意软件发现与分析第一章实验">
-<meta property="og:url" content="https://cswangxy.github.io/2022/10/17/cp1-lab/index.html">
+<meta property="og:title" content="贝叶斯分类">
+<meta property="og:url" content="https://cswangxy.github.io/2022/11/18/machime-learning-1/index.html">
 <meta property="og:site_name" content="Blog of Xingyu Wang">
-<meta property="og:description" content="cp1-Labs 2022-10-13 Lab 1-1  将 Lab01-01.exe 和 Lab01-01.dll 上传至www.virustotal.com分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。   01">
+<meta property="og:description" content="一、贝叶斯学习 1.1 概述 \[ P(A|B)&#x3D;\frac{P(B|A)P(A)}{P(B)}&#x3D;\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|\sim A)P(\sim A)} \]">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-1.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-2.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-6.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-3.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-4.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-5.JPG">
-<meta property="og:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-7.JPG">
-<meta property="article:published_time" content="2022-10-17T14:35:52.673Z">
-<meta property="article:modified_time" content="2022-11-06T03:39:18.736Z">
+<meta property="article:published_time" content="2022-11-18T07:23:22.000Z">
+<meta property="article:modified_time" content="2022-11-18T07:32:22.074Z">
 <meta property="article:author" content="Xingyu-Wang">
-<meta property="article:tag" content="逆向">
-<meta property="article:tag" content="软件安全">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cswangxy.github.io/2022/10/17/cp1-lab/1-1.JPG">
 
-<link rel="canonical" href="https://cswangxy.github.io/2022/10/17/cp1-lab/">
+<link rel="canonical" href="https://cswangxy.github.io/2022/11/18/machime-learning-1/">
 
 
 <script id="page-configurations">
@@ -55,7 +46,7 @@
   };
 </script>
 
-  <title>恶意软件发现与分析第一章实验 | Blog of Xingyu Wang</title>
+  <title>贝叶斯分类 | Blog of Xingyu Wang</title>
   
 
 
@@ -175,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://cswangxy.github.io/2022/10/17/cp1-lab/">
+    <link itemprop="mainEntityOfPage" href="https://cswangxy.github.io/2022/11/18/machime-learning-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -188,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          恶意软件发现与分析第一章实验
+          贝叶斯分类
         </h1>
 
         <div class="post-meta">
@@ -197,23 +188,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-10-17 22:35:52" itemprop="dateCreated datePublished" datetime="2022-10-17T22:35:52+08:00">2022-10-17</time>
+              <time title="Created: 2022-11-18 15:23:22 / Modified: 15:32:22" itemprop="dateCreated datePublished" datetime="2022-11-18T15:23:22+08:00">2022-11-18</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-11-06 11:39:18" itemprop="dateModified" datetime="2022-11-06T11:39:18+08:00">2022-11-06</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%8F%91%E7%8E%B0%E4%B8%8E%E5%88%86%E6%9E%90%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">恶意软件发现与分析课程实验</span></a>
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
                 </span>
             </span>
 
@@ -235,48 +220,109 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="cp1-labs">cp1-Labs</h1>
-<p>2022-10-13</p>
-<h2 id="lab-1-1">Lab 1-1</h2>
-<ol type="1">
-<li>将 Lab01-01.exe 和 Lab01-01.dll 上传至<code>www.virustotal.com</code>分析并查看报告，可发现两个文件都已被多家安全机构评估为恶意样本。</li>
-</ol>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-1.JPG" alt="01"><figcaption aria-hidden="true">01</figcaption>
-</figure>
+        <h2 id="一贝叶斯学习">一、贝叶斯学习</h2>
+<h3 id="概述">1.1 概述</h3>
+<p><span class="math display">\[
+P(A|B)=\frac{P(B|A)P(A)}{P(B)}=\frac{P(B|A)P(A)}{P(B|A)P(A)+P(B|\sim A)P(\sim A)}
+\]</span></p>
 <span id="more"></span>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-2.JPG" alt="02"><figcaption aria-hidden="true">02</figcaption>
-</figure>
-<ol start="2" type="1">
-<li>根据 viroustotal 提供的信息，可得文件的编译时间</li>
+<h3 id="贝叶斯决策论">1.2 贝叶斯决策论</h3>
+<ol type="1">
+<li><p>概率基础</p>
+<p>对于事件 A，其概率满足<span class="math inline">\(P(A)\in [0,1]\)</span></p>
+<p>条件概率：<span class="math inline">\(P(A|B)=\frac{P(AB)}{P(B)}\)</span></p>
+<p>乘法定理：<span class="math inline">\(P(AB)=P(A|B)P(B)=P(B|A)P(A)\)</span></p>
+<p>全概率公式：</p>
+<p><span class="math display">\[
+A_1\cup A_2\cup ... \cup A_n = \Omega,且, A_i\cap A_j = \varphi, 则 P(B) = \sum_{i=1}^{n}P(B|A_i)P(A_i)
+\]</span></p>
+<p>贝叶斯公式：</p>
+<p><span class="math display">\[
+P(A_i|B)=\frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{n}P(B|A_j)P(A_j)}
+\]</span></p></li>
+<li><p>Bayes 决策,基于观察特征类别的贝叶斯公式：</p>
+<p><span class="math display">\[
+P(\omega_i|x)= \frac{P(x|\omega_i)P(\omega_i)}{P(x)}=\frac{P(x|\omega_i)P(\omega_i)}{\sum_jP(x|\omega_i)P(\omega_i)}
+\]</span></p>
+<p>即， <span class="math inline">\(P(\omega_i|x) \propto P(x|\omega_i)P(\omega_i)\)</span></p>
+<p><span class="math display">\[
+Decide
+\begin{cases}
+&amp;\omega_1, \qquad &amp; if\quad P(\omega_1|x)&gt;P(\omega_2|x)\\
+&amp;\omega_2, \qquad &amp; if\quad P(\omega_1|x)&lt;P(\omega_2|x)\\
+\end{cases}
+\]</span> 原问题可转化为 <span class="math display">\[
+Decide
+\begin{cases}
+&amp;\omega_1, \qquad &amp; if\quad P(x|\omega_1)P(\omega_1)&gt;P(x|\omega_2)P(\omega_2)\\
+&amp;\omega_2, \qquad &amp; if\quad P(x|\omega_1)P(\omega_1)&lt;P(x|\omega_2)P(\omega_2)\\
+\end{cases}
+\]</span></p></li>
 </ol>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-6.JPG" alt="03"><figcaption aria-hidden="true">03</figcaption>
-</figure>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-3.JPG" alt="04"><figcaption aria-hidden="true">04</figcaption>
-</figure>
+<p><span class="math display">\[
+   Decide \begin{cases}&amp;\omega_1, \qquad &amp; if\quad \frac{P(x|\omega_1)}{P(x|\omega_2)}&gt;\frac{P(\omega_2)}{P(\omega_1)}\\&amp;\omega_2, \qquad &amp; if\quad \frac{P(x|\omega_1)}{P(x|\omega_2)}&lt;\frac{P(\omega_2)}{P(\omega_1)}\\\end{cases}
+\]</span></p>
 <ol start="3" type="1">
-<li>是否有迹象说明这两个文件被加壳或混淆？</li>
+<li><p>类别相似性函数可写为如下形式：</p>
+<p><span class="math display">\[
+g_i=P(\omega_i|x)=\frac{P(x|\omega_i)P(\omega_i)}{\sum_jP(x|\omega_i)P(\omega_i)}\\
+g_i = P(x|\omega_i)P(\omega_i)\\
+g_i = ln P(x|\omega_i)+lnP(\omega_i)
+\]</span></p></li>
+<li><p>决策函数 <span class="math display">\[
+g(x) = g_1(x)-g_2(x)
+\]</span> <span class="math inline">\(g(x)=0\)</span>是决策平面。</p></li>
 </ol>
-<p>直接使用 PEiD 做检测，可得如下结果</p>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-4.JPG" alt="05"><figcaption aria-hidden="true">05</figcaption>
-</figure>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-5.JPG" alt="1-5"><figcaption aria-hidden="true">1-5</figcaption>
-</figure>
-<p>可知两样本都为被加壳</p>
-<ol start="4" type="1">
-<li><p>使用 dependency Walker 打开 lab01-01.exe，查看导入表，发现其导入了 msvcrt.dll、kernel32.dll。其中前者是每一个执行文件都会包含的，后者则包含了文件的搜索、处理、修改操作。</p>
-<p>使用 string 查看 lab01-01.exe 中包含的字符串，可发现其中存在用来混淆视听的 kerne132.dll</p></li>
+<h2 id="贝叶斯分类器">2.3 贝叶斯分类器</h2>
+<ol type="1">
+<li><p>预备知识</p>
+<p>贝叶斯分类器是基于贝叶斯决策的分类器</p>
+<p>变量和参数：</p>
+<p>类别<span class="math inline">\(C:C=\{c_1,c_2...c_M\}\)</span></p>
+<p>数据<span class="math inline">\(D\)</span>和样本<span class="math inline">\(x:D={x_i}\)</span></p>
+<p>贝叶斯学习：<span class="math inline">\(P(c_i|x)\propto P(x|c_i)P(c_i)\)</span></p>
+<p>贝叶斯决策的类别相似性函数和决策函数如 2.2 节所示。</p></li>
+<li><p>特殊的贝叶斯分类器：</p>
+<p>朴素贝叶斯分类器：假设<span class="math inline">\(P(x|c)\)</span>中<span class="math inline">\(x\)</span>特征向量各维属性独立</p>
+<p>半朴素贝叶斯分类器：假设<span class="math inline">\(P(x|c)\)</span>中<span class="math inline">\(x\)</span>的各维属性存在依赖</p>
+<p>正态分布的贝叶斯分类器：假设<span class="math inline">\(P(x|c(\theta))\)</span>服从正态分布</p></li>
+<li><p>朴素贝叶斯分类器</p>
+<p>采用了属性条件独立性假设，即</p>
+<p><span class="math display">\[
+P(c|x)=\frac{P(c)P(x|c)}{P(x)}\propto P(c)\prod{_{i-1}^d}P(x_i|c)
+\]</span></p>
+<p>关键问题：由训练样本学习类别条件概率<span class="math inline">\(P(x_i|c)\)</span>和类别先验概率<span class="math inline">\(P(c)\)</span>。</p>
+<p><span class="math display">\[
+P(c) = \frac{|D_c|}{|D|}
+\]</span></p>
+<p>类别概率密度估计：</p>
+<p>若<span class="math inline">\(x_i\)</span>离散</p>
+<p><span class="math display">\[
+P(x_i|c)=\frac{|D_{c,x_i}|}{D_c}
+\]</span></p>
+<p><span class="math inline">\(D_{c,x_i}\)</span>表示<span class="math inline">\(D_c\)</span>中第<span class="math inline">\(i\)</span>个属性上取值为<span class="math inline">\(x_i\)</span>的样本组成的集合。</p>
+<p>若<span class="math inline">\(x_i\)</span>连续</p>
+<p><span class="math display">\[
+P(x_i|c) = \frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{(x_i-\mu)^2}{2\sigma^2_{c,i}})
+\]</span></p>
+<p>即由某一概率分布估计类别概率</p></li>
+<li><p>朴素贝叶斯分类器</p>
+<p>学习过程：计算类别先验估计，计算类别条件概率估计</p>
+<p>决策过程：计算类别先验估计，计算类别条件概率估计，进行决策，决策公式如下：</p>
+<p><span class="math display">\[
+h(x) = \max_{c\in y}\prod_{i=1}^{d}P(x_i|c)
+\]</span></p></li>
+<li><p>拉普拉斯平滑</p>
+<p>避免因训练集样本数据不充分而导致概率为 0，对先验概率和类别条件概率进行计算时进行拉普拉斯平滑，如下</p>
+<p><span class="math display">\[
+\hat{P}(c)= \frac{|D_c|+1}{|D|+N}\\
+\hat{P}(x_i|c) = \frac{|D_{c,x_i}|+1}{|D_c|+N_i}
+\]</span></p>
+<p>其中，<span class="math inline">\(N\)</span>为类别数，<span class="math inline">\(N_i\)</span>为<span class="math inline">\(x_i\)</span>的可能取值个数。</p></li>
+<li><p>正态密度的贝叶斯分类器 <span class="math display">\[
+h(x) = \max_{c\in y}P(c)P(x|c)
+\]</span> 其中，<span class="math inline">\(P(x|c)\)</span>服从正态分布。</p></li>
 </ol>
-<figure>
-<img src="/2022/10/17/cp1-lab/1-7.JPG" alt="1-7"><figcaption aria-hidden="true">1-7</figcaption>
-</figure>
-<p>​ 查看 lab01-01.dll 的导入表，可看到起导入了 WS2.dll，kernel32.dll 导入了 createprocess 和 sleep 函数。其中 create 函数可能用于运行程序，sleep 则用于进入休眠模式。lab01-01.dll 文件的 string 中有 IP 地址，属于基于网络的迹象。</p>
-<p>lab01-01.dll 是一个后门程序，lab01-01.exe 是用于装载 dll 文件并运行的。</p>
 
     </div>
 
@@ -292,7 +338,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://cswangxy.github.io/2022/10/17/cp1-lab/" title="恶意软件发现与分析第一章实验">https://cswangxy.github.io/2022/10/17/cp1-lab/</a>
+    <a href="https://cswangxy.github.io/2022/11/18/machime-learning-1/" title="贝叶斯分类">https://cswangxy.github.io/2022/11/18/machime-learning-1/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -303,8 +349,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%80%86%E5%90%91/" rel="tag"># 逆向</a>
-              <a href="/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/" rel="tag"># 软件安全</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
           </div>
 
         
@@ -312,11 +357,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/10/18/hello-world/" rel="next" title="Hexo 部署方法">
-      Hexo 部署方法 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/11/16/cs144-lab1/" rel="prev" title="cs144-lab1">
+      <i class="fa fa-chevron-left"></i> cs144-lab1
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -375,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cp1-labs"><span class="nav-number">1.</span> <span class="nav-text">cp1-Labs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lab-1-1"><span class="nav-number">1.1.</span> <span class="nav-text">Lab 1-1</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">一、贝叶斯学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%86%B3%E7%AD%96%E8%AE%BA"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 贝叶斯决策论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">2.3 贝叶斯分类器</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -515,6 +560,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
